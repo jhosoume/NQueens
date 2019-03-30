@@ -9,11 +9,11 @@ unsigned int NaiveAlgorithm::numSolutions() {
 }
 
 void NaiveAlgorithm::run() {
-  Board board(rows, columns);
+  Board *board = new Board(rows, columns);
   solve(board, queens);
 }
 
-void NaiveAlgorithm::solve(Board board, unsigned int num_queens) {
+void NaiveAlgorithm::solve(Board *board, unsigned int num_queens) {
   Queen *queen;
 
   if (num_queens <= 0) {
@@ -23,14 +23,10 @@ void NaiveAlgorithm::solve(Board board, unsigned int num_queens) {
 
   for (unsigned int row = 0; row < rows; ++row) {
     for (unsigned int column = 0; column < columns; ++column) {
-      std::cout << row << column << std::endl;
-        std::cout << "Safe? " << board.isSafe(row, column) << std::endl;
-        std::cout << "Num Queens " << board.numQueens() << std::endl;
-        board.inspect();
-      if (board.isSafe(row, column)) {
-        queen = board.addQueen(row, column);
+      if (board->isSafe(row, column)) {
+        queen = board->addQueen(row, column);
         solve(board, num_queens - 1);
-        board.removeQueen(queen);
+        board->removeQueen(queen);
       }
     }
   }

@@ -25,8 +25,8 @@ int main(void) {
   NaiveAlgorithm na2 = NaiveAlgorithm(2, 2, 1);
   na2.run();
   std::cout << "2x2, 1 Queen -> Num solutions: " << na2.numSolutions() << std::endl;
-  for (auto solution : na2.solutions) {
-    solution.inspect();
+  for (Board *solution : na2.solutions) {
+    solution->inspect();
   }
 
   return 0;

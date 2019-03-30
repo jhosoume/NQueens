@@ -2,7 +2,8 @@
 
 Board::Board(unsigned int n_rows, unsigned int n_columns)
     : n_rows{n_rows}, n_columns{n_columns},
-      tiles(n_rows, std::vector <char>(n_columns, '*'))
+      tiles(n_rows, std::vector <char>(n_columns, '*')),
+      queens{std::list< Queen *>()}
     {}
 
 Board::~Board() {
@@ -38,12 +39,17 @@ Queen * Board::addQueen(unsigned int line, unsigned int column) {
   tiles[line][column] = 'Q';
   queens.push_back(q_piece);
   std::cout << "[addQueen] Size: " << queens.size() << std::endl;
+  std::cout << "[addQueen ]Queen id " << q_piece->id << std::endl;
+        std::cout << "[addQueen] Queens" << std::endl;
+        showQueens();
+        std::cout << "[addQueen] Queens End" << std::endl;
   return q_piece;
 }
 
 bool Board::removeQueen(Queen *queen) {
   unsigned int old_size = queens.size();
   queens.remove(queen);
+  tiles[queen->row][queen->column] = '*';
   return (queens.size() < old_size);
 }
 
@@ -64,9 +70,9 @@ unsigned int Board::numQueens() {
 }
 
 void Board::showQueens() {
-  std::cout << "\n\nQueen positions " << std::endl;
+  std::cout << "\nQueen positions " << std::endl;
   unsigned int num = 1;
-  for (auto queen : queens) {
+  for (Queen *queen : queens) {
     std::cout << "Q" << num << " Line: " <<
       queen->row << " Column: " << queen->column << std::endl;
     ++num;
