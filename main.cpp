@@ -5,7 +5,7 @@ void modify_queen(Queen &q) {
 }
 
 int main(void) {
-  Board b2 = Board(2, 2);
+  Board b2 = Board(4, 4);
   b2.inspect();
 
   Queen q = Queen(0, 0);
@@ -15,5 +15,10 @@ int main(void) {
   modify_queen(q);
   std::cout << "Queen Column " << q.column << std::endl;
 
+  b2.addQueen(0, 0);
+  b2.showQueens();
+  b2.inspect();
+  std::cout << b2.isSafe(3, 1);
+  b2.showQueens();
   return 0;
 }
