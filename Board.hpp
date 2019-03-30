@@ -11,18 +11,18 @@ class Board {
 public:
   Board(unsigned int, unsigned int);
   ~Board();
-  bool hasClash;
   void inspect();
-  void addQueen(unsigned int, unsigned int);
+  Queen * addQueen(unsigned int, unsigned int);
   bool isSafe(unsigned int, unsigned int);
   unsigned int numQueens();
   void showQueens();
+  bool removeQueen(Queen *);
 
 private:
   unsigned int n_rows, n_columns, n_queens;
 
   std::vector< std::vector<char> > tiles;
-  std::list< Queen > queens;
+  std::list< Queen *> queens;
 };
 
 #endif

@@ -5,8 +5,8 @@ INCLUDES = -I.
 #LIBS=-lm add lib math
 
 
-SRCS = Queen.cpp Board.cpp main.cpp
-DEPS = Queen.hpp Board.hpp
+SRCS = Queen.cpp Board.cpp NaiveAlgorithm.cpp main.cpp
+DEPS = Queen.hpp Board.hpp NaiveAlgorithm.hpp
 OBJS = $(SRCS:.cpp=.o)
 
 MAIN = main
