@@ -6,15 +6,16 @@
 
 class NaiveAlgorithm {
 public:
-  NaiveAlgorithm(unsigned int, unsigned int, unsigned int);
-  std::list< Board *> solutions;
-  unsigned int numSolutions();
+  NaiveAlgorithm(int, int, int);
+  ~NaiveAlgorithm();
+  int solutions;
   void run();
 
 private:
-  unsigned int rows, columns, queens;
+  int Factorial(int);
+  int rows, columns, queens;
   bool runned;
-  void solve(Board *board, unsigned int num_queens);
+  void solve(Board *, int);
 };
 
 #endif

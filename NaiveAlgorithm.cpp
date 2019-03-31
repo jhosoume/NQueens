@@ -1,28 +1,32 @@
 #include "NaiveAlgorithm.hpp"
 
-NaiveAlgorithm::NaiveAlgorithm(unsigned int rows, unsigned int columns, unsigned int queens)
-    : rows{rows}, columns{columns}, queens{queens}
+NaiveAlgorithm::NaiveAlgorithm(int rows, int columns, int queens)
+    : solutions{0}, rows{rows}, columns{columns}, queens{queens}
     {}
 
-unsigned int NaiveAlgorithm::numSolutions() {
-  return solutions.size();
+NaiveAlgorithm::~NaiveAlgorithm() {
+}
+
+int NaiveAlgorithm::Factorial(int num) {
+  return (num == 1 || num == 0) ? 1 : Factorial(num - 1) * num;
 }
 
 void NaiveAlgorithm::run() {
   Board *board = new Board(rows, columns);
   solve(board, queens);
+  solutions /= Factorial(queens);
 }
 
-void NaiveAlgorithm::solve(Board *board, unsigned int num_queens) {
+void NaiveAlgorithm::solve(Board *board, int num_queens) {
   Queen *queen;
 
   if (num_queens <= 0) {
-    solutions.push_back(board);
+    ++solutions;
     return;
   }
 
-  for (unsigned int row = 0; row < rows; ++row) {
-    for (unsigned int column = 0; column < columns; ++column) {
+  for (int row = 0; row < rows; ++row) {
+    for (int column = 0; column < columns; ++column) {
       if (board->isSafe(row, column)) {
         queen = board->addQueen(row, column);
         solve(board, num_queens - 1);

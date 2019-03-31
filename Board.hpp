@@ -9,17 +9,17 @@
 
 class Board {
 public:
-  Board(unsigned int, unsigned int);
+  Board(int, int);
   ~Board();
   void inspect();
-  Queen * addQueen(unsigned int, unsigned int);
-  bool isSafe(unsigned int, unsigned int);
-  unsigned int numQueens();
+  Queen * addQueen(int, int);
+  bool isSafe(int, int);
+  int numQueens();
   void showQueens();
   bool removeQueen(Queen *);
 
 private:
-  unsigned int n_rows, n_columns, n_queens;
+  int n_rows, n_columns, n_queens;
 
   std::vector< std::vector<char> > tiles;
   std::list< Queen *> queens;

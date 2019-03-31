@@ -4,8 +4,9 @@
 class Queen {
 public:
   Queen();
-  Queen(unsigned int, unsigned int);
-  unsigned int row, column, id;
+  Queen(int, int);
+  int row, column;
+  unsigned int id;
   bool operator ==(const Queen&);
 
 private:

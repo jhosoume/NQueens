@@ -3,7 +3,7 @@ unsigned int Queen::current_id;
 
 Queen::Queen(){}
 
-Queen::Queen(unsigned int row, unsigned int column)
+Queen::Queen(int row, int column)
     : row{row}, column{column}, id{current_id++}
     {}
 
