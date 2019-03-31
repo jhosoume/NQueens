@@ -1,19 +1,18 @@
-#ifndef NAIVE
-#define NAIVE
+#ifndef SQ
+#define SQ
 
 #include <list>
 #include <string>
 #include "Board.hpp"
 
-class NaiveAlgorithm {
+class SingleQueenAlgorithm {
 public:
-  NaiveAlgorithm(int, int, int);
-  ~NaiveAlgorithm();
+  SingleQueenAlgorithm(int, int, int);
+  ~SingleQueenAlgorithm();
   int solutions;
   void run(bool);
 
 private:
-  int Factorial(int);
   int rows, columns, queens;
   void solve(Board &, int);
 };
