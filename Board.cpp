@@ -42,7 +42,7 @@ Queen * Board::addQueen(int line, int column) {
 }
 
 bool Board::removeQueen(Queen *queen) {
-  int old_size = queens.size();
+  unsigned int old_size = queens.size();
   queens.remove(queen);
   tiles[queen->row][queen->column] = '*';
   return (queens.size() < old_size);
