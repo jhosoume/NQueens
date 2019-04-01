@@ -25,7 +25,6 @@ void SingleQueenAlgorithm::solve(Board &board, int num_queens) {
 
   if (num_queens <= 0) {
     ++solutions;
-    board.inspect();
     return;
   }
 
